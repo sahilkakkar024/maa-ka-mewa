@@ -177,6 +177,52 @@ footer .num { color: var(--gold-hi); user-select: all; letter-spacing: .06em; }
 }
 
 
+
+/* ---- luxury intro: gold coin that splits open ---- */
+.intro { position: fixed; inset: 0; z-index: 100; background: #0e0907; overflow: hidden; cursor: pointer; }
+.intro .door { position: absolute; top: 0; bottom: 0; width: 50%; overflow: hidden; will-change: transform; transition: transform 1.25s cubic-bezier(.77,0,.18,1); }
+.intro .door.l { left: 0; } .intro .door.r { right: 0; }
+.intro .pic { position: absolute; top: 0; bottom: 0; width: 200%; background: #0e0907 url(img/intro-coin.jpg) center / auto 100% no-repeat; transform: scale(1.14); opacity: 0; filter: brightness(.6); animation: coinIn 1.8s cubic-bezier(.2,.7,.2,1) .15s forwards; }
+.intro .door.l .pic { left: 0; } .intro .door.r .pic { right: 0; }
+.intro .door::after { content: ""; position: absolute; inset: -20% -60%; background: linear-gradient(105deg, transparent 42%, rgba(255,226,170,.38) 50%, transparent 58%); transform: translateX(-60%); animation: glint 1.6s ease-in-out 1.1s forwards; mix-blend-mode: screen; }
+.intro .seam { position: absolute; left: 50%; top: 8%; bottom: 8%; width: 2px; margin-left: -1px; background: linear-gradient(180deg, transparent, #FFD9A0, #E8762A, #FFD9A0, transparent); box-shadow: 0 0 18px 4px rgba(244,163,92,.55); opacity: 0; transform: scaleY(0); }
+.intro .txt { position: absolute; left: 0; right: 0; bottom: 7%; text-align: center; color: #F8F4E7; opacity: 0; animation: fadeUp 1s ease 1.2s forwards; }
+.intro .txt span { display: block; font-family: var(--deva); font-style: italic; font-size: clamp(1.4rem, 3.4vw, 2.1rem); color: #F4A35C; }
+.intro .txt small { display: block; margin-top: 8px; font-size: .68rem; letter-spacing: .5em; text-transform: uppercase; color: #DCCBB8; }
+.intro .smoke i { position: absolute; bottom: -20%; width: 46vmax; height: 46vmax; border-radius: 50%; background: radial-gradient(circle, rgba(220,205,190,.16), transparent 62%); filter: blur(18px); animation: smoke 7s ease-in infinite; }
+.intro .skip { position: absolute; right: 18px; top: calc(16px + env(safe-area-inset-top, 0px)); background: none; border: 1px solid rgba(244,163,92,.5); color: #F4A35C; font: 500 .66rem var(--body); letter-spacing: .3em; text-transform: uppercase; padding: 9px 14px; cursor: pointer; opacity: 0; animation: fadeUp .6s ease .6s forwards; }
+.intro.open .door.l { transform: translateX(-102%); } .intro.open .door.r { transform: translateX(102%); }
+.intro.seam-on .seam { animation: seam .5s ease-out forwards; }
+.intro.open .seam, .intro.open .txt, .intro.open .skip, .intro.open .smoke { opacity: 0 !important; transition: opacity .35s ease; }
+.intro.done { opacity: 0; transition: opacity .4s ease; pointer-events: none; }
+@keyframes coinIn { to { transform: scale(1); opacity: 1; filter: brightness(1); } }
+@keyframes glint { to { transform: translateX(60%); } }
+@keyframes seam { to { opacity: 1; transform: scaleY(1); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes smoke { 0% { transform: translate(0,0) scale(.7); opacity: 0; } 30% { opacity: 1; } 100% { transform: translate(var(--sx, 6vw), -70vh) scale(1.4); opacity: 0; } }
+@media (min-aspect-ratio: 9/16) { .intro .pic { -webkit-mask-image: linear-gradient(90deg, transparent calc(50% - 27.9vh), #000 calc(50% - 27.9vh + 110px), #000 calc(50% + 27.9vh - 110px), transparent calc(50% + 27.9vh)); mask-image: linear-gradient(90deg, transparent calc(50% - 27.9vh), #000 calc(50% - 27.9vh + 110px), #000 calc(50% + 27.9vh - 110px), transparent calc(50% + 27.9vh)); } }
+html.intro-on { overflow: hidden; }
+html.intro-on .hero *, html.intro-on .medallion { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) { .intro .pic { animation: none; opacity: 1; transform: none; filter: none; } .intro .door { transition: none; } }
+
+/* ---- luxury finish ---- */
+body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 90; opacity: .045; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.hero h1 em, .hero h1 em .w, .head h2 em, .gift h2 em { background: linear-gradient(100deg, #C2581C 0%, #F4A35C 28%, #FFE1B5 44%, #E8762A 60%, #B4521A 100%); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.hero::before { content: ""; position: absolute; inset: 22px; border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); pointer-events: none; z-index: 1; }
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(420px circle at var(--mx, 70%) var(--my, 40%), rgba(244,163,92,.16), transparent 70%); transition: background .2s; }
+.head .label, .gift .label { letter-spacing: .42em; }
+.btn:not(.primary) { background: linear-gradient(var(--gold), var(--gold)) no-repeat 0 100% / 100% 0; transition: background-size .45s cubic-bezier(.2,.7,.2,1), color .3s; }
+.btn:not(.primary):hover { background-size: 100% 100%; color: var(--on-gold); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 em, .hero h1 em .w, .head h2 em, .gift h2 em { animation: foil 7s linear infinite; }
+  .js .hero h1 em .w { animation: up .8s cubic-bezier(.2,.7,.2,1) forwards, foil 7s linear infinite; animation-delay: calc(.2s + var(--i) * .07s), 0s; }
+  @keyframes foil { to { background-position: 220% center; } }
+  .js .card.reveal .photo img { clip-path: inset(100% 0 0 0); transform: scale(1.12); transition: clip-path 1.3s cubic-bezier(.77,0,.18,1), transform 1.6s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+  .js .card.reveal.in .photo img { clip-path: inset(0 0 0 0); transform: scale(1); }
+  .js .gift.reveal .gimg { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.77,0,.18,1) .2s; }
+  .js .gift.reveal.in .gimg { clip-path: inset(0 0 0 0); }
+}
+
 /* ---- palettes: "choc" = chocolate brown, cream & burnt orange; "plum" = aubergine & gold (default tokens above) ---- */
 :root[data-palette="choc"] {
   color-scheme: light;
@@ -315,6 +361,35 @@ footer .num { color: var(--gold-hi); user-select: all; letter-spacing: .06em; }
 </symbol>
 </svg>
 
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="door l"><div class="pic"></div></div><div class="door r"><div class="pic"></div></div>
+  <div class="seam"></div>
+  <div class="smoke"><i style="left:-8%;animation-delay:0s;--sx:10vw"></i><i style="left:30%;animation-delay:1.6s;--sx:-6vw"></i><i style="left:62%;animation-delay:.8s;--sx:8vw"></i></div>
+  <div class="txt"><span>माँ के हाथ का स्वाद</span><small>Homemade · Small batch</small></div>
+  <button class="skip" type="button" tabindex="-1">Skip</button>
+</div>
+<script>
+(function () {
+  var el = document.getElementById("intro"), force = /[?&]intro=1/.test(location.search), seen = false;
+  try { seen = sessionStorage.getItem("mkm-intro") === "1"; } catch (e) {}
+  if (seen && !force) { el.remove(); return; }
+  document.documentElement.classList.add("intro-on");
+  try { sessionStorage.setItem("mkm-intro", "1"); } catch (e) {}
+  var calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches, gone = false;
+  function open() {
+    if (gone) return; gone = true;
+    el.classList.add("seam-on");
+    setTimeout(function () {
+      el.classList.add("open");
+      setTimeout(function () { document.documentElement.classList.remove("intro-on"); window.dispatchEvent(new Event("introdone")); }, 350);
+      setTimeout(function () { el.classList.add("done"); }, 1200);
+      setTimeout(function () { el.remove(); }, 1650);
+    }, calm ? 0 : 420);
+  }
+  el.addEventListener("click", open);
+  setTimeout(open, calm ? 600 : 2700);
+})();
+</script>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <header class="top">
   <div class="wrap">
@@ -687,6 +762,16 @@ if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches) {
   document.addEventListener("keydown", e => { if (!box) return; if (e.key === "Escape") close(); if (e.key === "ArrowRight") { idx = (idx + 1) % PICS.length; show(); } if (e.key === "ArrowLeft") { idx = (idx + PICS.length - 1) % PICS.length; show(); } });
 })();
 
+
+if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  const heroEl = document.querySelector(".hero");
+  heroEl.addEventListener("pointermove", e => { const r = heroEl.getBoundingClientRect(); heroEl.style.setProperty("--mx", (e.clientX - r.left) + "px"); heroEl.style.setProperty("--my", (e.clientY - r.top) + "px"); });
+  document.querySelectorAll(".btn").forEach(b => {
+    b.addEventListener("pointermove", e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px, ${(e.clientY - r.top - r.height / 2) * .3}px)`; });
+    b.addEventListener("pointerleave", () => { b.style.transform = ""; });
+  });
+}
+
 /* ---- motion: photo strip, scroll reveals, counter, order pulse ---- */
 document.documentElement.classList.add("js");
 (function strip() {
@@ -713,7 +798,8 @@ renderSlip = () => { _renderSlip(); const s = $("#slip"); if (cart.size) { s.cla
   if (!el || !n || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   let t0; el.textContent = "0";
   const step = t => { t0 ??= t; const p = Math.min(1, (t - t0) / 1400); el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))).toLocaleString("en-IN"); if (p < 1) requestAnimationFrame(step); };
-  setTimeout(() => requestAnimationFrame(step), 600);
+  const go = () => setTimeout(() => requestAnimationFrame(step), 600);
+  document.documentElement.classList.contains("intro-on") ? addEventListener("introdone", go, { once: true }) : go();
 })();
 reveal();
 renderGrid("all");
