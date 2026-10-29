@@ -165,10 +165,10 @@ footer .wrap { display: grid; gap: 14px; justify-items: center; }
 footer .fname { font-family: var(--display); font-size: 1.8rem; color: var(--ink); }
 footer .num { color: var(--gold-hi); user-select: all; letter-spacing: .06em; }
 
-/* mobile order bar */
-.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--surface); border-top: 1px solid var(--gold); color: var(--ink); padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px)); display: none; justify-content: space-between; align-items: center; gap: 12px; }
+/* mobile order bar (extra bottom space keeps the Send order button clear of the "Powered by Netlify" badge) */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--surface); border-top: 1px solid var(--gold); color: var(--ink); padding: 12px 20px calc(58px + env(safe-area-inset-bottom, 0px)); display: none; justify-content: space-between; align-items: center; gap: 12px; }
 .bar a { color: var(--on-gold); background: var(--gold); padding: 10px 18px; text-decoration: none; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; }
-@media (max-width: 940px) { .bar.show { display: flex; } body.has-bar { padding-bottom: 72px; } }
+@media (max-width: 940px) { .bar.show { display: flex; } body.has-bar { padding-bottom: 120px; } }
 
 @media (prefers-reduced-motion: no-preference) {
   .medallion .spin { transform-origin: 200px 200px; animation: spin 90s linear infinite; }
