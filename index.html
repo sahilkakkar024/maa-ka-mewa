@@ -494,7 +494,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     <div class="wrap">
       <div class="gift">
         <div>
-          <video class="gimg gvid" src="img/petite-flow.mp4" poster="img/petite-flow-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Opening the Maa Ka Mewa Petite gift box with roasted kaju and badam jars" style="aspect-ratio:16/9;height:auto"></video>
+          <video class="gimg gvid" id="giftVid" src="img/classic-flow.mp4" poster="img/classic-flow-poster.jpg" autoplay muted playsinline preload="metadata" aria-label="Opening the Maa Ka Mewa Classic and Petite gift boxes" style="aspect-ratio:16/9;height:auto"></video>
           <span class="label">Diwali &amp; festive gifting</span>
           <h2>A mithai box they <em>will remember</em></h2>
           <p>Hand-roasted kaju and badam, kishmish and mixed seeds, packed in a festive gift box. A thoughtful choice for family, friends and clients. Want ladoo, panjeeri or a different mix? Tell us and we will put a box together for you. Bulk and corporate orders welcome.</p>
@@ -743,6 +743,12 @@ if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches) {
 }
 
 
+/* gift video: Classic then Petite, on repeat */
+(function giftVid() {
+  const v = document.getElementById("giftVid"); if (!v) return;
+  const list = ["img/classic-flow.mp4", "img/petite-flow.mp4"]; let i = 0;
+  v.addEventListener("ended", () => { i = (i + 1) % list.length; v.src = list[i]; v.play().catch(() => {}); });
+})();
 /* ---- photo lightbox: tap any photo to enlarge ---- */
 (function lightbox() {
   const PICS = ["classic", "kaju-tube", "badam-jar", "ladoo", "kaju-gold", "duo", "petite", "badam-tube", "panjeeri", "kaju-spicy", "celebration"].map(p => `img/lx-${p}-full.jpg`);
