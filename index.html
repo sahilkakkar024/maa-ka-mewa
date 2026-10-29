@@ -266,7 +266,11 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 
 /* ---- photo lightbox ---- */
 .strip img, .card .photo img, .gtiles img { cursor: zoom-in; }
-.gtiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+.gtiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 22px; }
+.gtiles figure { grid-column: span 2; }
+.gtiles figure.w { grid-column: span 3; }
+.gtiles figure.w img { aspect-ratio: 3 / 2; }
+@media (max-width: 600px) { .gtiles { gap: 8px; } .gtiles figcaption { letter-spacing: .1em; font-size: .58rem; } }
 .gtiles figure { margin: 0; }
 .gtiles img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; display: block; border: 1px solid var(--line); transition: transform .5s ease; }
 .gtiles img:hover { transform: scale(1.03); }
@@ -586,7 +590,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
           <li><span><b>Classic</b><small>4 jars · masala kaju, masala badam, kishmish &amp; mixed seeds</small></span><i>₹1,499</i></li>
           <li><span><b>Made for you</b><small>More options available on request, put together to your requirements</small></span><i>Ask us</i></li>
         </ul>
-        <div class="gtiles"><figure><img src="img/lx-duo.jpg" alt="The Petite gift box with roasted kaju and badam" width="900" height="900"><figcaption>The Petite</figcaption></figure><figure><img src="img/lx-classic.jpg" alt="The Classic 4-jar gift box" width="900" height="900"><figcaption>The Classic</figcaption></figure><figure><img src="img/lx-ladoo.jpg" alt="Dry fruit ladoo box" width="900" height="900"><figcaption>Ladoo box</figcaption></figure></div>
+        <div class="gtiles"><figure><img src="img/lx-petite2.jpg" alt="The Petite 2-jar gift box with roasted kaju and badam" width="900" height="900" loading="lazy"><figcaption>Petite · 2 jars</figcaption></figure><figure><img src="img/lx-duo.jpg" alt="The Petite 500 g gift box with kaju and badam tins" width="900" height="900" loading="lazy"><figcaption>Petite 500 g</figcaption></figure><figure><img src="img/lx-classic.jpg" alt="The Classic 4-jar gift box" width="900" height="900" loading="lazy"><figcaption>Classic · 4 jars</figcaption></figure><figure class="w"><img src="img/lx-ladoo.jpg" alt="Dry fruit ladoo box" width="900" height="900" loading="lazy"><figcaption>Ladoo box</figcaption></figure><figure class="w"><img src="img/lx-panjeeri.jpg" alt="Panjeeri box" width="900" height="900" loading="lazy"><figcaption>Panjeeri box</figcaption></figure></div>
       </div>
     </div>
   </section>
@@ -867,7 +871,7 @@ if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches) {
 })();
 /* ---- photo lightbox: tap any photo to enlarge ---- */
 (function lightbox() {
-  const PICS = ["classic", "kaju-tube", "badam-jar", "ladoo", "kaju-gold", "duo", "petite", "badam-tube", "panjeeri", "kaju-spicy", "celebration"].map(p => `img/lx-${p}-full.jpg`);
+  const PICS = ["classic", "petite2", "kaju-tube", "badam-jar", "ladoo", "kaju-gold", "duo", "petite", "badam-tube", "panjeeri", "kaju-spicy", "celebration"].map(p => `img/lx-${p}-full.jpg`);
   let box = null, idx = 0;
   const show = () => { box.querySelector("img").src = PICS[idx]; };
   const close = () => { if (!box) return; box.classList.remove("open"); const b = box; box = null; setTimeout(() => b.remove(), 300); document.body.style.overflow = ""; };
