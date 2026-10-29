@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Homemade roasted kaju and badam, desi ghee dry fruit ladoo, panjeeri and festive gift boxes. Made in small batches by Maa. Order on WhatsApp.">
-<meta property="og:title" content="Maa Ka Mewa"><meta property="og:description" content="Homemade dry fruits & mithai, made the way Maa makes them."><meta property="og:image" content="img/gift-petite.jpg">
+<meta property="og:title" content="Maa Ka Mewa"><meta property="og:description" content="Homemade dry fruits & mithai, made the way Maa makes them."><meta property="og:image" content="img/lx-classic.jpg">
 <link rel="icon" href="img/logo.png">
 <title>Maa Ka Mewa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -494,7 +494,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     <div class="wrap">
       <div class="gift">
         <div>
-          <video class="gimg gvid" src="img/classic-unboxing.mp4" poster="img/classic-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Unboxing the Maa Ka Mewa Classic gift box"></video>
+          <img class="gimg" src="img/lx-celebration.jpg" alt="Maa Ka Mewa premium gift hampers" width="1280" height="714" style="aspect-ratio:16/9;height:auto">
           <span class="label">Diwali &amp; festive gifting</span>
           <h2>A mithai box they <em>will remember</em></h2>
           <p>Hand-roasted kaju and badam, kishmish and mixed seeds, packed in a festive gift box. A thoughtful choice for family, friends and clients. Want ladoo, panjeeri or a different mix? Tell us and we will put a box together for you. Bulk and corporate orders welcome.</p>
@@ -506,7 +506,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
           <li><span><b>Classic</b><small>4 jars · masala kaju, masala badam, kishmish &amp; mixed seeds</small></span><i>₹1,499</i></li>
           <li><span><b>Made for you</b><small>More options available on request, put together to your requirements</small></span><i>Ask us</i></li>
         </ul>
-        <div class="gtiles"><figure><img src="img/n-petite.jpg" alt="The Petite 2-jar gift box" width="720" height="720"><figcaption>The Petite</figcaption></figure><figure><img src="img/n-classic.jpg" alt="The Classic 4-jar gift box" width="720" height="720"><figcaption>The Classic</figcaption></figure><figure><img src="img/n-celeb.jpg" alt="Maa Ka Mewa festive gifting" width="720" height="720"><figcaption>Festive gifting</figcaption></figure></div>
+        <div class="gtiles"><figure><img src="img/lx-petite.jpg" alt="The Petite gift box" width="900" height="900"><figcaption>The Petite</figcaption></figure><figure><img src="img/lx-classic.jpg" alt="The Classic 4-jar gift box" width="900" height="900"><figcaption>The Classic</figcaption></figure><figure><img src="img/lx-ladoo.jpg" alt="Dry fruit ladoo box" width="900" height="900"><figcaption>Ladoo box</figcaption></figure></div>
       </div>
     </div>
   </section>
@@ -547,15 +547,15 @@ const SHOP = {
   whatsappDisplay: "+91 79820 95506"
 };
 const PRODUCTS = [
-  { id: "kaju-salted", cat: "cashew", icon: "i-cashew", img: "n-kaju", name: "Roasted Salted Kaju", tag: "Classic", desc: "Whole cashews, slow roasted for the perfect crunch.", sizes: { "Small jar · 180 g": 319, "Medium jar · 250 g": 449, "Big jar · 450 g": 769 } },
-  { id: "kaju-mirch", cat: "cashew", icon: "i-cashew", img: "kaju-dark", name: "Kali Mirch Kaju", tag: "Peppery", desc: "Bold and peppery, with a gentle kick.", sizes: { "Small jar · 180 g": 329, "Medium jar · 250 g": 459, "Big jar · 450 g": 779 } },
-  { id: "kaju-masala", cat: "cashew", icon: "i-cashew", img: "real-kaju-masala", name: "Mix Masala Kaju", tag: "Chatpata", desc: "Chatpata and full of flavour, in our signature house masala.", sizes: { "Small jar · 180 g": 339, "Medium jar · 250 g": 469, "Big jar · 450 g": 789 } },
-  { id: "badam-salted", cat: "almond", icon: "i-almond", img: "n-badam", name: "Roasted Salted Badam", tag: "Classic", desc: "Slow roasted almonds with a satisfying crunch.", sizes: { "Small jar · 180 g": 339, "Medium jar · 250 g": 479, "Big jar · 450 g": 829 } },
-  { id: "badam-mirch", cat: "almond", icon: "i-almond", img: "n-badam", name: "Kali Mirch Badam", tag: "Peppery", desc: "Bold and peppery, with a gentle kick.", sizes: { "Small jar · 180 g": 349, "Medium jar · 250 g": 489, "Big jar · 450 g": 839 } },
-  { id: "badam-masala", cat: "almond", icon: "i-almond", img: "real-badam-masala", name: "Mix Masala Badam", tag: "Chatpata", desc: "Chatpata and full of flavour, in our signature house masala.", sizes: { "Small jar · 180 g": 359, "Medium jar · 250 g": 499, "Big jar · 450 g": 849 } },
-  { id: "ladoo-dryfruit", cat: "ladoo", icon: "i-dfladoo", img: "n-ladoo", name: "Dry Fruit Ladoo", desc: "Rich and wholesome, packed with dry fruits and slow roasted in desi ghee. Regular, or no added sugar.", tag: "Three sweetness options", sizes: { "Regular · 500 g": 499, "Regular · 1 kg": 999, "No added sugar, stevia · 500 g": 519, "No added sugar, stevia · 1 kg": 999, "No added sugar, anjeer & dates · 500 g": 599, "No added sugar, anjeer & dates · 1 kg": 1149 } },
-  { id: "panjeeri", cat: "panjeeri", icon: "i-panjeeri", img: "n-panj", name: "Panjeeri", tag: "Winter special", desc: "A rich winter classic, slow roasted in desi ghee and loaded with dry fruits. Sweetened with sugar or desi khand.", sizes: { "Sugar · 500 g": 499, "Sugar · 1 kg": 950, "Desi khand · 500 g": 499, "Desi khand · 1 kg": 950 } },
-  { id: "gift-box", cat: "gift", icon: "i-dfladoo", img: "gift-classic-open-choc", name: "Festive Gift Box", tag: "Gifting", desc: "Our roasted dry fruits in a festive gift box. Choose a box below, or ask us for something made to your requirements.", sizes: { "Petite · kaju + badam": 829, "Petite · badam + kishmish": 750, "Petite · badam + mixed seeds": 750, "Petite 500 g · kaju + badam": 1650, "Classic · 4 jars": 1499 } }
+  { id: "kaju-salted", cat: "cashew", icon: "i-cashew", img: "lx-kaju-tube", name: "Roasted Salted Kaju", tag: "Classic", desc: "Whole cashews, slow roasted for the perfect crunch.", sizes: { "Small jar · 180 g": 319, "Medium jar · 250 g": 449, "Big jar · 450 g": 769 } },
+  { id: "kaju-mirch", cat: "cashew", icon: "i-cashew", img: "lx-kaju-spicy", name: "Kali Mirch Kaju", tag: "Peppery", desc: "Bold and peppery, with a gentle kick.", sizes: { "Small jar · 180 g": 329, "Medium jar · 250 g": 459, "Big jar · 450 g": 779 } },
+  { id: "kaju-masala", cat: "cashew", icon: "i-cashew", img: "lx-kaju-gold", name: "Mix Masala Kaju", tag: "Chatpata", desc: "Chatpata and full of flavour, in our signature house masala.", sizes: { "Small jar · 180 g": 339, "Medium jar · 250 g": 469, "Big jar · 450 g": 789 } },
+  { id: "badam-salted", cat: "almond", icon: "i-almond", img: "lx-badam", name: "Roasted Salted Badam", tag: "Classic", desc: "Slow roasted almonds with a satisfying crunch.", sizes: { "Small jar · 180 g": 339, "Medium jar · 250 g": 479, "Big jar · 450 g": 829 } },
+  { id: "badam-mirch", cat: "almond", icon: "i-almond", img: "lx-badam", name: "Kali Mirch Badam", tag: "Peppery", desc: "Bold and peppery, with a gentle kick.", sizes: { "Small jar · 180 g": 349, "Medium jar · 250 g": 489, "Big jar · 450 g": 839 } },
+  { id: "badam-masala", cat: "almond", icon: "i-almond", img: "lx-badam", name: "Mix Masala Badam", tag: "Chatpata", desc: "Chatpata and full of flavour, in our signature house masala.", sizes: { "Small jar · 180 g": 359, "Medium jar · 250 g": 499, "Big jar · 450 g": 849 } },
+  { id: "ladoo-dryfruit", cat: "ladoo", icon: "i-dfladoo", img: "lx-ladoo", name: "Dry Fruit Ladoo", desc: "Rich and wholesome, packed with dry fruits and slow roasted in desi ghee. Regular, or no added sugar.", tag: "Three sweetness options", sizes: { "Regular · 500 g": 499, "Regular · 1 kg": 999, "No added sugar, stevia · 500 g": 519, "No added sugar, stevia · 1 kg": 999, "No added sugar, anjeer & dates · 500 g": 599, "No added sugar, anjeer & dates · 1 kg": 1149 } },
+  { id: "panjeeri", cat: "panjeeri", icon: "i-panjeeri", img: "lx-panjeeri", name: "Panjeeri", tag: "Winter special", desc: "A rich winter classic, slow roasted in desi ghee and loaded with dry fruits. Sweetened with sugar or desi khand.", sizes: { "Sugar · 500 g": 499, "Sugar · 1 kg": 950, "Desi khand · 500 g": 499, "Desi khand · 1 kg": 950 } },
+  { id: "gift-box", cat: "gift", icon: "i-dfladoo", img: "lx-classic", name: "Festive Gift Box", tag: "Gifting", desc: "Our roasted dry fruits in a festive gift box. Choose a box below, or ask us for something made to your requirements.", sizes: { "Petite · kaju + badam": 829, "Petite · badam + kishmish": 750, "Petite · badam + mixed seeds": 750, "Petite 500 g · kaju + badam": 1650, "Classic · 4 jars": 1499 } }
 ];
 /* ======================================= */
 
@@ -745,12 +745,12 @@ if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches) {
 
 /* ---- photo lightbox: tap any photo to enlarge ---- */
 (function lightbox() {
-  const PICS = ["n-classic", "n-kaju", "gift-classic-open-choc", "n-ladoo", "real-kaju-masala", "n-petite", "n-badam", "gift-petite-open-choc", "n-panj", "real-badam-masala", "n-celeb", "kaju-dark"].map(p => `img/${p}.jpg`);
+  const PICS = ["classic", "kaju-tube", "ladoo", "kaju-gold", "petite", "panjeeri", "kaju-spicy", "celebration"].map(p => `img/lx-${p}-full.jpg`);
   let box = null, idx = 0;
   const show = () => { box.querySelector("img").src = PICS[idx]; };
   const close = () => { if (!box) return; box.classList.remove("open"); const b = box; box = null; setTimeout(() => b.remove(), 300); document.body.style.overflow = ""; };
   const open = src => {
-    const clean = src.split("?")[0].replace(/^.*\/(img\/)/, "$1");
+    const clean = src.split("?")[0].replace(/^.*\/(img\/)/, "$1").replace("lx-badam.jpg", "lx-celebration.jpg").replace(/^img\/lx-([a-z-]+?)(-full)?\.jpg$/, "img/lx-$1-full.jpg");
     idx = Math.max(0, PICS.indexOf(clean)); if (PICS.indexOf(clean) < 0) PICS.push(clean), idx = PICS.length - 1;
     box = document.createElement("div"); box.className = "lb"; box.setAttribute("role", "dialog"); box.setAttribute("aria-label", "Photo");
     box.innerHTML = `<img alt=""><button class="x" type="button" aria-label="Close">×</button><button class="pv" type="button" aria-label="Previous photo">‹</button><button class="nx" type="button" aria-label="Next photo">›</button>`;
@@ -782,7 +782,7 @@ if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches) {
 /* ---- motion: photo strip, scroll reveals, counter, order pulse ---- */
 document.documentElement.classList.add("js");
 (function strip() {
-  const pics = ["n-classic", "n-kaju", "gift-classic-open-choc", "n-ladoo", "real-kaju-masala", "n-petite", "n-badam", "gift-petite-open-choc", "n-panj", "real-badam-masala", "n-celeb", "kaju-dark"];
+  const pics = ["lx-classic", "lx-kaju-tube", "lx-ladoo", "lx-kaju-gold", "lx-petite", "lx-badam", "lx-panjeeri", "lx-kaju-spicy"];
   const one = pics.map(p => `<img src="img/${p}.jpg" alt="" width="720" height="720">`).join("");
   $("#track").innerHTML = one + one;
 })();
