@@ -304,6 +304,76 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   @keyframes up { to { opacity: 1; transform: none; } }
   @keyframes rise { from { opacity: 0; transform: scale(.9) translateY(20px); } to { opacity: 1; transform: none; } }
 }
+
+/* ===== Luxury layer: dark video hero, product spotlight, dark gift ===== */
+.lux { --lux-bg: #120C0A; --lux-ink: #F8F1E4; --lux-mute: #CDBBA8; --lux-gold: #E2B26A; }
+.hero.lux { min-height: 100svh; display: grid; align-items: end; background: var(--lux-bg); color: var(--lux-ink); border-bottom: 0; }
+.hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transform: scale(1.06); transition: transform 8s ease-out; }
+.hero.lux.ready .hero-vid { transform: scale(1); }
+.hero-shade { position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, rgba(14,9,7,.92) 0%, rgba(14,9,7,.72) 34%, rgba(14,9,7,.15) 70%, rgba(14,9,7,.35) 100%), linear-gradient(0deg, rgba(14,9,7,.85) 0%, transparent 35%); }
+.hero.lux .wrap { display: block; padding-block: 120px 96px; }
+.hero.lux .copy { max-width: 620px; }
+.hero.lux h1 { color: var(--lux-ink); text-shadow: 0 2px 30px rgba(0,0,0,.4); }
+.hero.lux .lead { color: var(--lux-mute); }
+.hero.lux .hindi, .hero.lux .label { color: var(--lux-gold); }
+.hero.lux .btn:not(.primary) { color: var(--lux-ink); border-color: rgba(226,178,106,.6); background: rgba(14,9,7,.35); backdrop-filter: blur(6px); }
+.hero.lux .counter { justify-self: start; margin-top: 6px; background: rgba(14,9,7,.45); backdrop-filter: blur(8px); border-color: rgba(226,178,106,.5); color: var(--lux-ink); }
+.hero.lux::before { border-color: rgba(226,178,106,.35); }
+.scrollcue { position: absolute; left: 50%; bottom: 26px; z-index: 2; width: 26px; height: 42px; margin-left: -13px; border: 1px solid rgba(226,178,106,.7); border-radius: 14px; }
+.scrollcue span { position: absolute; left: 50%; top: 8px; width: 3px; height: 8px; margin-left: -1.5px; border-radius: 2px; background: var(--lux-gold); animation: cue 1.8s ease-in-out infinite; }
+@keyframes cue { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
+@media (max-width: 860px) {
+  .hero.lux .wrap { padding-block: 96px 84px; text-align: center; }
+  .hero.lux .copy { margin-inline: auto; justify-items: center; }
+  .hero.lux .counter { justify-self: center; }
+  .hero-shade { background: linear-gradient(0deg, rgba(14,9,7,.96) 0%, rgba(14,9,7,.82) 42%, rgba(14,9,7,.2) 75%, rgba(14,9,7,.45) 100%); }
+}
+/* spotlight */
+.spot { position: relative; background: var(--lux-bg); color: var(--lux-ink); }
+.spot-media { position: sticky; top: 0; height: 100svh; display: grid; place-items: center end; padding-right: max(6vw, 32px); overflow: hidden; }
+.spot-frame { position: relative; width: min(40vw, 520px); aspect-ratio: 4 / 5; border: 1px solid rgba(226,178,106,.45); box-shadow: 0 40px 120px rgba(0,0,0,.6); overflow: hidden; }
+.spot-frame::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(226,178,106,.3); pointer-events: none; }
+.spot-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.12); transition: opacity 1s ease, transform 1.6s cubic-bezier(.2,.7,.2,1); }
+.spot-frame img.on { opacity: 1; transform: scale(calc(1 + var(--p, 0) * .08)); }
+.spot-glow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(244,180,100,.22), transparent 60%); mix-blend-mode: screen; pointer-events: none; }
+.spot-dots { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); display: grid; gap: 10px; }
+.spot-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(226,178,106,.3); transition: all .4s; }
+.spot-dots span.on { background: var(--lux-gold); height: 22px; border-radius: 3px; }
+.spot-steps { position: relative; margin-top: -100svh; padding-left: max(6vw, 32px); width: 52%; }
+.spot-intro { min-height: 70svh; display: grid; align-content: center; gap: 14px; }
+.spot-intro .label { color: var(--lux-gold); }
+.spot-intro h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 400; color: var(--lux-ink); }
+.spot-intro h2 em { font-style: italic; }
+.step { min-height: 100svh; display: grid; align-content: center; }
+.step .scard { max-width: 440px; display: grid; gap: 14px; opacity: .25; transform: translateY(30px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.step.on .scard { opacity: 1; transform: none; }
+.step .no { font-size: .74rem; letter-spacing: .3em; color: var(--lux-gold); }
+.step .no i { font-style: normal; opacity: .55; }
+.step h3 { font-family: var(--display); font-weight: 400; font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1.05; color: var(--lux-ink); }
+.step p { color: var(--lux-mute); font-size: 1.05rem; line-height: 1.7; margin: 0; }
+.step small { font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; color: var(--lux-gold); }
+.step .row { display: flex; align-items: center; gap: 22px; margin-top: 8px; }
+.step .row b { font-family: var(--display); font-size: 1.6rem; font-weight: 400; color: var(--lux-ink); }
+.step .row a { color: var(--lux-ink); text-decoration: none; font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; padding: 12px 22px; border: 1px solid rgba(226,178,106,.7); transition: background .3s, color .3s; }
+.step .row a:hover { background: var(--lux-gold); color: #120C0A; }
+@media (max-width: 860px) {
+  .spot-media { place-items: start center; padding: 0; }
+  .spot-frame { width: 100%; height: 100svh; aspect-ratio: auto; border: 0; box-shadow: none; }
+  .spot-frame::after { display: none; }
+  .spot-frame::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(14,9,7,.97) 0%, rgba(14,9,7,.85) 34%, rgba(14,9,7,.1) 62%, rgba(14,9,7,.4) 100%); }
+  .spot-dots { right: auto; left: 50%; top: 84px; transform: translateX(-50%); display: flex; z-index: 2; }
+  .spot-dots span.on { width: 22px; height: 6px; }
+  .spot-steps { width: auto; padding: 0 22px; }
+  .spot-intro { min-height: 100svh; align-content: end; padding-bottom: 14svh; text-align: center; justify-items: center; }
+  .step { align-content: end; padding-bottom: 12svh; }
+  .step .scard { margin-inline: auto; text-align: center; justify-items: center; padding: 22px 18px; background: rgba(14,9,7,.5); backdrop-filter: blur(6px); border: 1px solid rgba(226,178,106,.25); }
+  .step .scard h3 { font-size: 2.3rem; }
+  .step .scard p { font-size: .95rem; }
+  .step .row { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-vid { display: none; } .spot-frame img { transition: opacity .3s; transform: none !important; } .step .scard { opacity: 1; transform: none; } }
+/* dark gift section */
+#gifting .gift { background: radial-gradient(ellipse at 30% 0%, #2A1B15, #120C0A 70%) !important; border-color: rgba(226,178,106,.5) !important; }
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -412,7 +482,9 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 </header>
 
 <main id="top">
-  <section class="hero">
+  <section class="hero lux">
+    <video class="hero-vid" id="heroVid" muted autoplay loop playsinline preload="auto" poster="img/hero-temp.jpg" data-src="img/hero-temp.mp4" data-src-m="img/hero-temp-m.mp4" data-poster-m="img/hero-temp-m.jpg" aria-hidden="true"></video>
+    <div class="hero-shade" aria-hidden="true"></div>
     <div class="floaters" id="floaters" aria-hidden="true"></div>
     <div class="wrap">
       <div class="copy">
@@ -424,12 +496,10 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
           <a class="btn primary" href="#shop">Explore the collection</a>
           <a class="btn" id="wa-hero" href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
         </div>
-      </div>
-      <div class="medallion">
-        <svg viewBox="0 0 400 400" role="img" aria-label="Maa Ka Mewa logo: an illustration of Maa in her apron with a cooking pot"><g class="spin"><circle cx="200" cy="200" r="199" fill="none" stroke="var(--gold)" stroke-width=".8" stroke-dasharray="1 7" stroke-linecap="round"/></g><use href="#logo" x="8" y="8" width="384" height="384"/></svg>
         <div class="counter" id="counter" role="group" aria-label="Orders received"><span class="label">Orders Received</span><b id="orderCount">0</b><small id="orderUpdated">Since October 2026</small></div>
       </div>
     </div>
+    <a class="scrollcue" href="#story" aria-label="Scroll down"><span></span></a>
   </section>
 
   <div class="strip" aria-label="From Maa's kitchen"><div class="track" id="track"></div></div>
@@ -442,6 +512,11 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
       <div><strong>Nothing artificial</strong><span>No preservatives or colours</span></div>
     </div>
   </div>
+
+  <section class="spot lux" id="story" aria-label="Our collection, one by one">
+    <div class="spot-media" aria-hidden="true"><div class="spot-frame"><img src="img/lx-kaju-tube-full.jpg" alt="" style="object-position:center 60%" loading="lazy" data-i="0" class=on><img src="img/lx-badam-tube-full.jpg" alt="" style="object-position:center 55%" loading="lazy" data-i="1"><img src="img/lx-ladoo.jpg" alt="" style="object-position:center" loading="lazy" data-i="2"><img src="img/lx-classic.jpg" alt="" style="object-position:center" loading="lazy" data-i="3"><div class="spot-glow"></div></div><div class="spot-dots"><span data-i="0" class=on></span><span data-i="1"></span><span data-i="2"></span><span data-i="3"></span></div></div>
+    <div class="spot-steps"><div class="spot-intro"><span class="label">From Maa's kitchen</span><h2>Made slowly, <em>in small batches</em></h2></div><div class="step" data-i="0"><div class="scard"><span class="no">01 <i>/ 04</i></span><h3>Roasted Kaju</h3><p>Whole cashews, slow roasted in small batches until they turn golden and crisp.</p><small>Salted · Kali Mirch · Mix Masala</small><div class="row"><b>from ₹319</b><a href="#shop" data-cat="cashew">Shop now</a></div></div></div><div class="step" data-i="1"><div class="scard"><span class="no">02 <i>/ 04</i></span><h3>Roasted Badam</h3><p>Almonds roasted low and slow for a deep, satisfying crunch.</p><small>Salted · Kali Mirch · Mix Masala</small><div class="row"><b>from ₹339</b><a href="#shop" data-cat="almond">Shop now</a></div></div></div><div class="step" data-i="2"><div class="scard"><span class="no">03 <i>/ 04</i></span><h3>Dry Fruit Ladoo</h3><p>Rolled by hand in pure desi ghee. Regular, or with no added sugar.</p><small>500 g · 1 kg</small><div class="row"><b>from ₹499</b><a href="#shop" data-cat="ladoo">Shop now</a></div></div></div><div class="step" data-i="3"><div class="scard"><span class="no">04 <i>/ 04</i></span><h3>Festive Gift Boxes</h3><p>Our roasted dry fruits in keepsake boxes, ready to gift to family, friends and clients.</p><small>Petite · Petite 500 g · Classic</small><div class="row"><b>from ₹750</b><a href="#shop" data-cat="gift">Shop now</a></div></div></div></div>
+  </section>
 
   <section class="block" id="shop">
     <div class="wrap">
@@ -743,6 +818,36 @@ if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches) {
 }
 
 
+
+/* ---- luxury: hero video (phone/desktop source), product spotlight ---- */
+(function lux() {
+  const v = document.getElementById("heroVid");
+  if (v && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const m = matchMedia("(max-width: 860px)").matches;
+    if (m) v.poster = v.dataset.posterM;
+    v.src = m ? v.dataset.srcM : v.dataset.src;
+    v.play().catch(() => {});
+    v.addEventListener("playing", () => v.closest(".hero").classList.add("ready"), { once: true });
+  }
+  const spot = document.getElementById("story"); if (!spot) return;
+  const imgs = [...spot.querySelectorAll(".spot-frame img")], dots = [...spot.querySelectorAll(".spot-dots span")], steps = [...spot.querySelectorAll(".step")];
+  let cur = -1;
+  const set = i => { if (i === cur) return; cur = i; imgs.forEach((im, k) => im.classList.toggle("on", k === i)); dots.forEach((d, k) => d.classList.toggle("on", k === i)); steps.forEach((s, k) => s.classList.toggle("on", k === i)); };
+  set(0); steps[0].classList.remove("on");
+  let ticking = false;
+  const onScroll = () => {
+    ticking = false;
+    const mob = innerWidth <= 860, mid = innerHeight * (mob ? .7 : .5); let best = 0, bd = Infinity;
+    steps.forEach((s, k) => { const r = s.querySelector(".scard").getBoundingClientRect(), c = r.top + r.height / 2, d = Math.abs(c - mid); if (d < bd) { bd = d; best = k; } });
+    const first = steps[0].getBoundingClientRect();
+    if (steps[0].querySelector(".scard").getBoundingClientRect().top > innerHeight * .92) { set(0); steps[0].classList.remove("on"); } else { set(best); steps[best].classList.add("on"); }
+    const r = steps[best].getBoundingClientRect(); const p = Math.min(1, Math.max(0, 1 - (r.top + r.height / 2) / innerHeight));
+    if (imgs[best]) imgs[best].style.setProperty("--p", p.toFixed(3));
+  };
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+  spot.addEventListener("click", e => { const a = e.target.closest("a[data-cat]"); if (!a) return; const tab = document.querySelector(`.filters button[data-f="${a.dataset.cat}"]`); if (tab) setTimeout(() => tab.click(), 50); });
+})();
 /* gift video: Classic then Petite, on repeat */
 (function giftVid() {
   const v = document.getElementById("giftVid"); if (!v) return;
