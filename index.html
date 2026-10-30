@@ -391,6 +391,14 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   .step .row { justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) { .hero-vid { display: none; } .spot-frame img { transition: opacity .3s; transform: none !important; } .step .scard { opacity: 1; transform: none; } }
+/* gold dust */
+.dust { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
+.dust i { position: absolute; bottom: -10px; width: var(--z); height: var(--z); border-radius: 50%; background: radial-gradient(circle, #FFE3A8 0%, #E2B26A 45%, rgba(226,178,106,0) 70%); opacity: 0; animation: dust var(--t) linear var(--d) infinite; filter: blur(.3px); }
+@keyframes dust { 0% { transform: translate(0, 0); opacity: 0; } 10% { opacity: var(--o); } 85% { opacity: var(--o); } 100% { transform: translate(var(--x), -105vh); opacity: 0; } }
+.spot-media .dust { z-index: 2; }
+#gifting .gift { position: relative; overflow: hidden; }
+#gifting .gift > *:not(.dust) { position: relative; z-index: 2; }
+@media (prefers-reduced-motion: reduce) { .dust { display: none; } }
 /* dark gift section */
 #gifting .gift { background: radial-gradient(ellipse at 30% 0%, #2A1B15, #120C0A 70%) !important; border-color: rgba(226,178,106,.5) !important; }
 </style>
@@ -875,6 +883,19 @@ if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches) {
   addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
   spot.addEventListener("click", e => { const a = e.target.closest("a[data-cat]"); if (!a) return; const tab = document.querySelector(`.filters button[data-f="${a.dataset.cat}"]`); if (tab) setTimeout(() => tab.click(), 50); });
+})();
+
+/* ---- gold dust in dark sections ---- */
+(function polish() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const phone = matchMedia("(max-width: 860px)").matches;
+  const add = (host, n) => { if (!host) return; const d = document.createElement("div"); d.className = "dust"; d.setAttribute("aria-hidden", "true");
+    for (let i = 0; i < n; i++) { const e = document.createElement("i"), r = Math.random;
+      e.style.cssText = `left:${r() * 100}%;--z:${2 + r() * 4}px;--t:${9 + r() * 10}s;--d:${-r() * 18}s;--x:${(r() - .5) * 120}px;--o:${.35 + r() * .5}`; d.appendChild(e); }
+    host.appendChild(d); };
+  add(document.querySelector(".hero.lux"), phone ? 14 : 28);
+  add(document.querySelector(".spot-media"), phone ? 10 : 22);
+  add(document.querySelector("#gifting .gift"), phone ? 8 : 16);
 })();
 /* gift video: Classic then Petite, on repeat */
 (function giftVid() {
